@@ -88,12 +88,15 @@ public abstract class Produto implements Comparable<Produto>{
      */
     @Override
     public boolean equals(Object obj){
-        try{
-            Produto outro = (Produto)obj;
-            return this.hashCode() == outro.hashCode();
-        }catch (ClassCastException ex){
-            return false;
-        }
+    	
+    	if (this == obj) {
+    		return true;
+    	}
+    	if ((obj == null) || (getClass() != obj.getClass())) {
+    		return false;
+    	}
+    	Produto outroProduto = (Produto) obj;
+    	return (this.hashCode() == outroProduto.hashCode());
     }
     
     @Override
@@ -106,6 +109,7 @@ public abstract class Produto implements Comparable<Produto>{
      * @return Int de acordo com a regra padrão de Comparable (descrita acima)
      */
     public int compareTo(Produto outro){
+    	
     	if (this.idProduto == outro.idProduto)
     		return 0;
     	else if (this.idProduto < outro.idProduto)

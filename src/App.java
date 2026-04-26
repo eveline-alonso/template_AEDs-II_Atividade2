@@ -185,6 +185,7 @@ public class App {
     	Pedido pedido = new Pedido(LocalDate.now(), formaPagamento);
     	Produto produto;
     	int numProdutos;
+    	int quantidade;
     	
     	listarTodosOsProdutos();
     	System.out.println("Incluindo produtos no pedido...");
@@ -195,11 +196,12 @@ public class App {
         		System.out.println("Produto não encontrado");
         		i--;
         	} else {
-        		pedido.incluirProduto(produto);
+        		quantidade = lerOpcao("Quantos itens desse produto serão incluídos no pedido?", Integer.class);
+        		pedido.incluirProduto(produto, quantidade);
         	}
         }
     	
-    	return pedido;
+        return pedido;
     }
     
     /**
